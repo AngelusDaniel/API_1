@@ -17,20 +17,11 @@ class AlunoController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
+  async index () {
+    const alunos = await Aluno.query().with(["curso"]).fetch();
+    return alunos;
   }
 
-  /**
-   * Render a form to be used for creating a new aluno.
-   * GET alunos/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
-  }
 
   /**
    * Create/save a new aluno.
@@ -40,7 +31,10 @@ class AlunoController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request}) {
+    const data = request.only(["nome", "curso_id", "descricao"]);
+    const aluno = await Aluno.create(data);
+    return aluno;
   }
 
   /**
@@ -53,19 +47,10 @@ class AlunoController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
+    const aluno = await Aluno.findOrFail(params.id);
+    return aluno;
   }
 
-  /**
-   * Render a form to update an existing aluno.
-   * GET alunos/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-  }
 
   /**
    * Update aluno details.
@@ -76,6 +61,17 @@ class AlunoController {
    * @param {Response} ctx.response
    */
   async update ({ params, request, response }) {
+    const aluno = await Aluno.findOrFail(params.id);
+    const { nome, curso_id, descricao } = request.only([
+      "nome",
+      "curso_id",
+      "descricao",
+    ]);
+    aluno.nome = nome;
+    aluno.curso_id = curso_id;
+    aluno.descricao = descricao;
+    await aluno.save();
+    return aluno;
   }
 
   /**
@@ -87,6 +83,9 @@ class AlunoController {
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
+    const aluno = await Aluno.findOrFail(params.id);
+    await aluno.delete();
+    return aluno;
   }
 }
 

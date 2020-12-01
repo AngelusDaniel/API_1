@@ -18,19 +18,10 @@ class CursoController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
+    const cursos = await Curso.all();
+    return cursos;
   }
 
-  /**
-   * Render a form to be used for creating a new curso.
-   * GET cursos/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
-  }
 
   /**
    * Create/save a new curso.
@@ -55,17 +46,6 @@ class CursoController {
   async show ({ params, request, response, view }) {
   }
 
-  /**
-   * Render a form to update an existing curso.
-   * GET cursos/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-  }
 
   /**
    * Update curso details.
