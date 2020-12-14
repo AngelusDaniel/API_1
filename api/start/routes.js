@@ -16,8 +16,19 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
-})
+});
 Route.post("/register", "AuthController.register");
 Route.post("/authenticate", "AuthController.authenticate")
+
+//Route.group(() => {
+  Route.get('/cursos', "CursoController.index");
+  Route.resource("alunos", "AlunoController").apiOnly();
+  Route.post("/alunos", "AlunoController.store");
+  Route.get("/alunos/:id", "AlunoController.show");
+  Route.get("/alunos", "AlunoController.index");
+  Route.put("/alunos/:id", "AlunoController.update");
+  Route.delete("/alunos/:id", "AlunoController.destroy")
+//}).middleware(["auth"]);
