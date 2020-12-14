@@ -4,7 +4,7 @@
 const Env = use('Env')
 
 /** @type {import('@adonisjs/ignitor/src/Helpers')} */
-const Helpers = use('Helpers');
+const Helpers = use('Helpers')
 const Url = require("url-parse");
 const DATABASE_URL = new Url(Env.get("DATABASE_URL"));
 
@@ -86,6 +86,6 @@ module.exports = {
       //password: Env.get('DB_PASSWORD', ''),
       //database: Env.get('DB_DATABASE', 'adonis')
     },
-    //debug: Env.get('DB_DEBUG', false)
+    //debug: Env.get('DB_DEBUG', false),
   }
 }
