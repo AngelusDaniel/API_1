@@ -17,8 +17,8 @@ class AlunoSchema extends Schema {
         .onDelete("cascade")
         .notNullable();
       table.text("descricao");
-      table.timestamps()
-    })
+      table.timestamps();
+    });
   }
 
   down () {
