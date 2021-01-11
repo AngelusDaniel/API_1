@@ -18,7 +18,7 @@ class NoticiaController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    const noticias = await Noticias.query().with(["noticia"]).fetch();
+    const noticias = await Noticia.query().with(["noticia"]).fetch();
     return noticias;
   }
 
@@ -33,8 +33,8 @@ class NoticiaController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
-    const data = request.only(["titulo", "noticia_id", "noticias"]);
-    //console.log(auth.user.id);
+    const data = request.only(["titulo", "noticia_id", "texto"]);
+    console.log(auth.user.id);
     const noticia = await Noticia.create(data);
     return noticia;
   }
@@ -65,14 +65,14 @@ class NoticiaController {
    */
   async update ({ params, request, response }) {
     const aluno = await Aluno.findOrFail(params.id);
-    const { nome, curso_id, descricao } = request.only([
+    const { titulo, noticia_id, texto } = request.only([
       "titulo",
       "noticia_id",
-      "noticias",
+      "texto"
     ]);
     noticia.titulo = titulo;
     noticia.noticia_id = noticia_id;
-    aluno.noticias = noticias;
+    aluno.noticias = texto;
     await noticia.save();
     return noticia;
   }

@@ -11,11 +11,11 @@ class NoticiaSchema extends Schema {
       table
         .integer("noticia_id")
         .unsigned()
-        .references("id")
+        //.references("id")
         .onUpdate("cascade")
         .onDelete("cascade")
         .notNullable();
-      table.text("noticia");
+      table.text("texto");
       table.timestamps();
     })
   }
@@ -25,4 +25,4 @@ class NoticiaSchema extends Schema {
   }
 }
 
-module.exports = NoticiaSchema
+module.exports = NoticiaSchema;

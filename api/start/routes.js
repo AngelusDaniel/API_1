@@ -26,9 +26,9 @@ Route.post("/authenticate", "AuthController.authenticate");
 Route.group(() => {
   Route.get('/imagems', "ImagemController.index");
   Route.resource("/noticias", "NoticiaController").apiOnly();
-  //Route.post("/noticias", "NoticiaController.store");
-  //Route.get("/noticias/:id", "NoticiaController.show");
-  //Route.get("/noticias", "NoticiaController.index");
-  //Route.put("/noticias/:id", "NoticiaController.update");
-  //Route.delete("/noticias/:id", "NoticiaController.destroy")
+  Route.post("/noticias", "NoticiaController.store");
+  Route.get("/noticias/:id", "NoticiaController.show");
+  Route.get("/noticias", "NoticiaController.index");
+  Route.put("/noticias/:id", "NoticiaController.update");
+  Route.delete("/noticias/:id", "NoticiaController.destroy")
 }).middleware(["auth"]);
