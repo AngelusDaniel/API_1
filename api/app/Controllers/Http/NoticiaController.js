@@ -3,45 +3,45 @@
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
-const Aluno = use("App/Models/Aluno")
-
+const Noticia = use("App/Models/Noticia");
 /**
- * Resourceful controller for interacting with alunos
+ * Resourceful controller for interacting with noticias
  */
-class AlunoController {
+class NoticiaController {
   /**
-   * Show a list of all alunos.
-   * GET alunos
+   * Show a list of all noticias.
+   * GET noticias
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index () {
-    const alunos = await Aluno.query().with(["curso"]).fetch();
-    return alunos;
+  async index ({ request, response, view }) {
+    const noticias = await Noticias.query().with(["noticia"]).fetch();
+    return noticias;
   }
 
+  
 
   /**
-   * Create/save a new aluno.
-   * POST alunos
+   * Create/save a new noticia.
+   * POST noticias
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, auth }) {
-    const data = request.only(["nome", "curso_id", "descricao"]);
+  async store ({ request, response }) {
+    const data = request.only(["titulo", "noticia_id", "noticias"]);
     //console.log(auth.user.id);
-    const aluno = await Aluno.create(data);
-    return aluno;
+    const noticia = await Noticia.create(data);
+    return noticia;
   }
 
   /**
-   * Display a single aluno.
-   * GET alunos/:id
+   * Display a single noticia.
+   * GET noticias/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -49,14 +49,15 @@ class AlunoController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
-    const aluno = await Aluno.findOrFail(params.id);
-    return aluno;
+    const noticia = await Noticia.findOrFail(params.id);
+    return noticia;
   }
 
+  
 
   /**
-   * Update aluno details.
-   * PUT or PATCH alunos/:id
+   * Update noticia details.
+   * PUT or PATCH noticias/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -65,30 +66,30 @@ class AlunoController {
   async update ({ params, request, response }) {
     const aluno = await Aluno.findOrFail(params.id);
     const { nome, curso_id, descricao } = request.only([
-      "nome",
-      "curso_id",
-      "descricao",
+      "titulo",
+      "noticia_id",
+      "noticias",
     ]);
-    aluno.nome = nome;
-    aluno.curso_id = curso_id;
-    aluno.descricao = descricao;
-    await aluno.save();
-    return aluno;
+    noticia.titulo = titulo;
+    noticia.noticia_id = noticia_id;
+    aluno.noticias = noticias;
+    await noticia.save();
+    return noticia;
   }
 
   /**
-   * Delete a aluno with id.
-   * DELETE alunos/:id
+   * Delete a noticia with id.
+   * DELETE noticias/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
-    const aluno = await Aluno.findOrFail(params.id);
-    await aluno.delete();
-    return aluno;
+    const noticia = await Noticia.findOrFail(params.id);
+    await noticia.delete();
+    return noticia;
   }
 }
 
-module.exports = AlunoController
+module.exports = NoticiaController;
