@@ -3,15 +3,14 @@
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
-const Curso = use("App/Models/Curso")
 
 /**
- * Resourceful controller for interacting with cursos
+ * Resourceful controller for interacting with imagems
  */
-class CursoController {
+class ImagemController {
   /**
-   * Show a list of all cursos.
-   * GET cursos
+   * Show a list of all imagems.
+   * GET imagems
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -19,14 +18,23 @@ class CursoController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    const cursos = await Curso.all();
-    return cursos;
   }
 
+  /**
+   * Render a form to be used for creating a new imagem.
+   * GET imagems/create
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   * @param {View} ctx.view
+   */
+  async create ({ request, response, view }) {
+  }
 
   /**
-   * Create/save a new curso.
-   * POST cursos
+   * Create/save a new imagem.
+   * POST imagems
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -36,8 +44,8 @@ class CursoController {
   }
 
   /**
-   * Display a single curso.
-   * GET cursos/:id
+   * Display a single imagem.
+   * GET imagems/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -47,10 +55,21 @@ class CursoController {
   async show ({ params, request, response, view }) {
   }
 
+  /**
+   * Render a form to update an existing imagem.
+   * GET imagems/:id/edit
+   *
+   * @param {object} ctx
+   * @param {Request} ctx.request
+   * @param {Response} ctx.response
+   * @param {View} ctx.view
+   */
+  async edit ({ params, request, response, view }) {
+  }
 
   /**
-   * Update curso details.
-   * PUT or PATCH cursos/:id
+   * Update imagem details.
+   * PUT or PATCH imagems/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -60,8 +79,8 @@ class CursoController {
   }
 
   /**
-   * Delete a curso with id.
-   * DELETE cursos/:id
+   * Delete a imagem with id.
+   * DELETE imagems/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -71,4 +90,4 @@ class CursoController {
   }
 }
 
-module.exports = CursoController
+module.exports = ImagemController

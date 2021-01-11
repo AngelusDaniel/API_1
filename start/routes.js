@@ -21,14 +21,14 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSONS' }
 });
 Route.post("/register", "AuthController.register");
-Route.post("/authenticate", "AuthController.authenticate")
+Route.post("/authenticate", "AuthController.authenticate");
 
-//Route.group(() => {
-  Route.get('/cursos', "CursoController.index");
-  Route.resource("alunos", "AlunoController").apiOnly();
-  Route.post("/alunos", "AlunoController.store");
-  Route.get("/alunos/:id", "AlunoController.show");
-  Route.get("/alunos", "AlunoController.index");
-  Route.put("/alunos/:id", "AlunoController.update");
-  Route.delete("/alunos/:id", "AlunoController.destroy")
-//}).middleware(["auth"]);
+Route.group(() => {
+  Route.get('/imagems', "ImagemController.index");
+  Route.resource("/noticias", "NoticiaController").apiOnly();
+  Route.post("/noticias", "NoticiaController.store");
+  Route.get("/noticias/:id", "NoticiaController.show");
+  Route.get("/noticias", "NoticiaController.index");
+  Route.put("/noticias/:id", "NoticiaController.update");
+  Route.delete("/noticias/:id", "NoticiaController.destroy")
+}).middleware(["auth"]);
