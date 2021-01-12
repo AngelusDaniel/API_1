@@ -7,17 +7,10 @@ class NoticiaSchema extends Schema {
   up () {
     this.create('noticias', (table) => {
       table.increments();
-      table.string("titulo").notNullable();
-      table
-        .integer("noticia_id")
-        .unsigned()
-        //.references("id")
-        .onUpdate("cascade")
-        .onDelete("cascade")
-        .notNullable();
-      table.text("texto");
+      table.string("titul").notNullable();
+      table.texto("texto");
       table.timestamps();
-    })
+    });
   }
 
   down () {
