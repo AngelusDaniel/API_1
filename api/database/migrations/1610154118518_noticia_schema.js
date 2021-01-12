@@ -7,7 +7,7 @@ class NoticiaSchema extends Schema {
   up () {
     this.create('noticias', (table) => {
       table.increments();
-      table.string("titul").notNullable();
+      table.string("titulo").notNullable();
       table.texto("texto");
       table.timestamps();
     });
