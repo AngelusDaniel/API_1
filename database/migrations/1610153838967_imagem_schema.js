@@ -7,7 +7,7 @@ class ImagemSchema extends Schema {
   up () {
     this.create('imagems', (table) => {
       table.increments()
-      table.blob();
+      table.string("img");
       table.timestamps()
     })
   }

@@ -8,16 +8,9 @@ class NoticiaSchema extends Schema {
     this.create('noticias', (table) => {
       table.increments();
       table.string("titulo").notNullable();
-      table
-        .integer("noticia_id")
-        .unsigned()
-        //.references("id")
-        .onUpdate("cascade")
-        .onDelete("cascade")
-        .notNullable();
       table.text("texto");
       table.timestamps();
-    })
+    });
   }
 
   down () {
@@ -26,3 +19,4 @@ class NoticiaSchema extends Schema {
 }
 
 module.exports = NoticiaSchema;
+
