@@ -8,7 +8,7 @@ class NoticiaSchema extends Schema {
     this.create('noticias', (table) => {
       table.increments();
       table.string("titulo").notNullable();
-      table.texto("texto");
+      table.text("texto");
       table.timestamps();
     });
   }
@@ -19,3 +19,4 @@ class NoticiaSchema extends Schema {
 }
 
 module.exports = NoticiaSchema;
+

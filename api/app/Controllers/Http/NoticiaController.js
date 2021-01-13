@@ -33,7 +33,7 @@ class NoticiaController {
    * @param {Response} ctx.response
    */
   async store ({ request, auth }) {
-    const data = request.only(["titulo","texto"]);
+    const data = request.only(["titulo", "texto"]);
     console.log(auth.user.id);
     const noticia = await Noticia.create(data);
     return noticia;
