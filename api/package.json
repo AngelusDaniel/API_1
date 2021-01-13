@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node ace test"
+    "test": "node ace test",
+    "start": "node index",
+    "start": "node app"
   },
   "keywords": [
     "adonisjs",
