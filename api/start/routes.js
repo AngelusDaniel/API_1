@@ -14,21 +14,21 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use("Route")
 
 
 Route.get('/', () => {
-  return { greeting: 'Hello world in JSONS' }
+  return { greeting: "Hello world in JSON" }
 });
 Route.post("/register", "AuthController.register");
 Route.post("/authenticate", "AuthController.authenticate");
 
 Route.group(() => {
-  Route.get('/imagems', "ImagemController.index");
-  Route.resource("/noticias", "NoticiaController").apiOnly();
-  Route.post("/noticias", "NoticiaController.store");
-  Route.get("/noticias/:id", "NoticiaController.show");
-  Route.get("/noticias", "NoticiaController.index");
-  Route.put("/noticias/:id", "NoticiaController.update");
-  Route.delete("/noticias/:id", "NoticiaController.destroy")
+  //Route.get('/imagems', "ImagemController.index");
+  //Route.resource("/noticias", "NoticiaController").apiOnly();
+  //Route.post("/noticias", "NoticiaController.store");
+  //Route.get("/noticias/:id", "NoticiaController.show");
+  //Route.get("/noticias", "NoticiaController.index");
+  //Route.put("/noticias/:id", "NoticiaController.update");
+  //Route.delete("/noticias/:id", "NoticiaController.destroy")
 }).middleware(["auth"]);
