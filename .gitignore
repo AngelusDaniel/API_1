@@ -11,3 +11,4 @@ tmp
 database/*.sqlite
 
 *.lock*
+package-lock.json
